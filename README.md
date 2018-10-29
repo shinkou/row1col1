@@ -1,5 +1,9 @@
 # row1col1
 
+row1col1 runs queries, retrieves first columns in the first rows, and put
+them in a metric (CSV).  It was originally developed to verify data among
+multiple databases.
+
 ## How to Compile
 
 ```
