@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018  Chun-Kwong Wong
+ * Copyright (C) 2018 - 2020  Chun-Kwong Wong
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -147,9 +147,10 @@ public class Querier
 			)
 		);
 		Set<String> sqlAliases = new HashSet<>();
-		m_querySets.values().forEach(querySet -> {
-			sqlAliases.addAll(querySet.getSqls().keySet());
-		});
+		m_querySets.values().forEach
+		(
+			querySet -> sqlAliases.addAll(querySet.getSqls().keySet())
+		);
 
 		List<String> rTitle = new ArrayList<>();
 		rTitle.add((new Date()).toString());
@@ -161,7 +162,8 @@ public class Querier
 		{
 			List<String> r = new ArrayList<>();
 			r.add(sqlAlias);
-			m_querySets.forEach((dbAlias, querySet) -> {
+			m_querySets.forEach
+			((dbAlias, querySet) -> {
 				Object result = querySet.getResults().get(sqlAlias);
 				if (null != result)
 					r.add(result.toString());

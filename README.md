@@ -13,8 +13,14 @@ $ mvn clean package
 ## How to Run
 
 ```
-$ java [ -Dcsv.output=/tmp/some.csv ] -jar ./target/row1col-0.1.0.jar /path/to/some/properties
+$ java [ -Doptions ] -jar ./target/row1col-0.1.0.jar /path/to/some/properties/file
 ```
+where -Doptions could be any of the followings, or other system properties
+
+| Property Name | Description                          | Example                    |
+|---------------|--------------------------------------|----------------------------|
+| csv.output    | full / relative path the output CSV  | -Dcsv.output=/tmp/some.csv |
+| file.encoding | character encoding of the input file | -Dfile.encoding=ISO-8859-1 |
 
 ## Configuration
 
@@ -29,7 +35,6 @@ purpose, but for SQL statements.
 | *db_alias*.user            | Username (optional)            | "joe"                                      |
 | *db_alias*.password        | Password (optional)            | "mysecret"                                 |
 | *db_alias*.sql.*sql_alias* | SQL statement                  | "SELECT COUNT(\*) FROM some\_tbl"          |
-
 
 Here is a more complete example:
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018  Chun-Kwong Wong
+ * Copyright (C) 2018 - 2020  Chun-Kwong Wong
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
