@@ -1,8 +1,8 @@
 # row1col1
 
 row1col1 runs queries, retrieves first columns in the first rows, and put
-them in a metric (CSV).  It was originally developed to verify data across
-multiple databases.
+them in a CSV file.  It was originally developed to verify data across
+multiple databases before and after migrations.
 
 ## How to Compile
 
@@ -17,10 +17,10 @@ $ java [ -Doptions ] -jar ./target/row1col-0.1.0.jar /path/to/some/properties/fi
 ```
 where -Doptions could be any of the followings, or other system properties
 
-| Property Name | Description                          | Example                    |
-|---------------|--------------------------------------|----------------------------|
-| csv.output    | full / relative path the output CSV  | -Dcsv.output=/tmp/some.csv |
-| file.encoding | character encoding of the input file | -Dfile.encoding=ISO-8859-1 |
+| Property Name | Description                            | Default      | Example                    |
+|---------------|----------------------------------------|--------------|----------------------------|
+| csv.output    | full / relative path to the output CSV | row1col1.csv | -Dcsv.output=/tmp/some.csv |
+| file.encoding | character encoding of the input file   | UTF-8        | -Dfile.encoding=ISO-8859-1 |
 
 ## Configuration
 
