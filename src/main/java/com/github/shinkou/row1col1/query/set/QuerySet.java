@@ -91,7 +91,9 @@ public class QuerySet
 				log.info("{}.sql.{}", dbAlias, alias);
 				ResultSet rs = stmt.executeQuery(sql);
 				m_results.put(alias, rs.next() ? rs.getObject(1) : null);
+				rs.close();
 			}
+			stmt.close();
 		}
 		catch(SQLException e)
 		{

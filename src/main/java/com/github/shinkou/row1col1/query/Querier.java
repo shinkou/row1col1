@@ -16,10 +16,13 @@
  */
 package com.github.shinkou.row1col1.query;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -48,9 +51,9 @@ import com.github.shinkou.row1col1.query.set.QuerySet;
 public class Querier
 {
 	private static Logger log = LoggerFactory.getLogger(QuerySet.class);
-	protected static Pattern reFirstWord
+	protected final static Pattern reFirstWord
 		= Pattern.compile("^(\\w+)(\\.\\w+)+$");
-	protected static Pattern reSql
+	protected final static Pattern reSql
 		= Pattern.compile("^\\w+\\.sql\\.(\\w+)$");
 
 	protected String m_filepath;
@@ -135,7 +138,14 @@ public class Querier
 	protected void outputCsv(String filepath)
 		throws IOException
 	{
-		CSVWriter csvw = new CSVWriter(new FileWriter(filepath));
+		CSVWriter csvw = new CSVWriter
+		(
+			new OutputStreamWriter
+			(
+				new FileOutputStream(filepath)
+				, System.getProperty("file.encoding", "UTF-8")
+			)
+		);
 		Set<String> sqlAliases = new HashSet<>();
 		m_querySets.values().forEach(querySet -> {
 			sqlAliases.addAll(querySet.getSqls().keySet());
@@ -171,7 +181,14 @@ public class Querier
 		, QuerierException
 	{
 		PropertiesConfiguration props = new PropertiesConfiguration();
-		props.read(new FileReader(m_filepath));
+		props.read
+		(
+			new InputStreamReader
+			(
+				new FileInputStream(m_filepath)
+				, System.getProperty("file.encoding", "UTF-8")
+			)
+		);
 		prepare(props);
 		ExecutorService es = Executors.newFixedThreadPool
 		(
